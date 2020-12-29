@@ -102,15 +102,11 @@ button[class*=btn] {
   border: none;
   cursor: pointer;
 }
-.minus-btn {
-  /* margin-bottom: 3px; */
-  padding: 10px;
-  text-align: center;
+.minus-btn img{
+  margin-bottom: 3px;
 }
-.plus-btn {
-  /* margin-top: 2px; */
-  padding: 10px;
-  text-align: center;
+.plus-btn img{
+  margin-top: 2px;
 }
 button:focus,
 input:focus {
