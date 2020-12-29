@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NASI GORENG ONLINE</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+  </head>
+  <body onload="loadPesanan();">
+    <h2 align="center">Hi, Customer! Yuk pesan nasi goreng kesukaannya</h2>
+    <div class="order">
+      <div class="title">
+        Nasi Goreng Online
+      </div>
+
+      <!-- Item 1 -->
+      <div class="item">
+        
+        <div class="image">
+          <img src="small.jpg" width="120px" height="80px"/>
+        </div>
+
+        <div class="description">
+          <span>Nasi Goreng</span>
+          <span id="menu1">Telur Dadar</span>
+          <span>Small</span>
+        </div>
+
+        <div class="quantity">
+          <button class="minus-btn" type="button" name="button">
+            <img src="minus.png"/>
+          </button>
+          <input type="text" name="name" value="1" id="jumlahmenu1">
+          <button class="plus-btn" type="button" name="button">
+            <img src="plus.png"/>
+          </button>        
+        </div>
+
+        <div class="total-price"><span id="price1">8000</span></div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="item">
+        
+        <div class="image">
+          <img src="standard.jpg" width="120px" height="80px" />
+        </div>
+
+        <div class="description">
+          <span>Nasi Goreng</span>
+          <span id="menu2">Ayam + Telur Dadar</span>
+          <span>Standard</span>
+        </div>
+
+        <div class="quantity">
+          <button class="minus-btn" type="button" name="button">
+            <img src="minus.png"/>
+          </button>
+          <input type="text" name="name" value="1" id="jumlahmenu2">
+          <button class="plus-btn" type="button" name="button">
+            <img src="plus.png"/>
+          </button> 
+        </div>
+
+        <div class="total-price"><span id="price2">10000</span></div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="item">
+        
+        <div class="image">
+          <img src="jumbo.jpg" width="120px" height="80px"/>
+        </div>
+
+        <div class="description">
+          <span>Nasi Goreng</span>
+          <span id="menu3">Ayam + Telur Dadar + Ati</span>
+          <span>Jumbo</span>
+        </div>
+
+        <div class="quantity">
+          <button class="minus-btn" type="button" name="button">
+            <img src="minus.png"/>
+          </button>
+          <input type="text" name="name" value="1" id="jumlahmenu3">
+          <button class="plus-btn" type="button" name="button">
+            <img src="plus.png"/>
+          </button>     
+        </div>
+
+        <div class="total-price"><span id="price3">15000</span></div>
+      </div>     
+
+      <!-- Total Order -->
+
+      <div class="final-order">
+        <input type="button" value="Update Pesanan" onclick="getData();" class="btn btn-success btn-small" />
+      </div>
+      <div class="final-order">
+        Ringkasan Pesanannya
+      </div>
+      <div class="final-order">
+        Total: <span id="jumlahPesan"></span> menu nasi goreng
+      </div>
+      <div class="final-order">
+        Harga: <span id="jumlahHarga"></span>
+      </div>
+      <div class="final-order">
+        <input type="button" value="OK Konfirmasi Order" onclick="confirmOrder();" class="btn btn-success btn-small" />
+      </div>
+
+    <!--Konten LIFF v2-->
+    <div id="liffAppContent">
+      <!-- LOGIN LOGOUT BUTTONS -->
+      <div class="buttonGroup final-order">
+        <button id="liffLoginButton" class="btn btn-success btn-small">Log in</button>
+        <button id="liffLogoutButton" class="btn btn-warning btn-small">Log out</button>
+      </div>
+      <div id="statusMessage">
+        <div id="isInClientMessage"></div>
+      </div>
+      <div class="buttonGroup final-order">
+        <div class="buttonRow">
+            <button id="openWindowButton" class="btn btn-success btn-small">Open External Window</button>
+            <button id="closeWindowButton" class="btn btn-danger btn-small">Close LIFF App</button>
+            <button id="sendMessageButton" class="btn btn-warning btn-small">Send Message</button>
+        </div>
+      </div>
+
+      <!-- LIFF DATA -->
+      <div id="liffData" style="display:none;">
+        <h3 id="liffDataHeader" class="textLeft">Information:</h3>
+        <table>
+            <tr>
+                <th>isInClient : </th>
+                <td id="isInClient" class="textLeft"></td>
+            </tr>
+            <tr>
+                <th>isLoggedIn : </th>
+                <td id="isLoggedIn" class="textLeft"></td>
+            </tr>
+        </table>
+      </div>
+    </div>
+    
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    $('.minus-btn').on('click', function(e) {
+      e.preventDefault();
+      var $this = $(this);
+      var $input = $this.closest('div').find('input');
+      var value = parseInt($input.val());
+
+      if (value > 1) {
+        value = value - 1;
+      } else {
+        value = 0;
+      }
+
+      $input.val(value);
+      
+    });
+
+    $('.plus-btn').on('click', function(e) {
+      e.preventDefault();
+      var $this = $(this);
+      var $input = $this.closest('div').find('input');
+      var value = parseInt($input.val());
+
+      if (value < 100) {
+        value = value + 1;
+      } else {
+        value =100;
+      }
+
+      $input.val(value);
+      
+    });
+
+  </script>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <script src="config.js"></script>
+  <script src="liff.js"></script>
+</html>
