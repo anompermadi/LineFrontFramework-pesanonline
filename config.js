@@ -1,9 +1,36 @@
+function loadLogin() {
+    if(!liff.isInClient()){
+        if (liff.isLoggedIn()){
+            return getData();
+        } else {
+        alert('Kak, sebelum order...mohon login dulu ya. Gampang kok, klik aja tombol Login'); 
+        }
+    }
+    else {
+        return getData();
+    }
+}
+
+function loadLogin1() {
+    if(!liff.isInClient()){
+        if (liff.isLoggedIn()){
+            return confirmOrder();
+        } else {
+        alert('Kak, sebelum order...mohon login dulu ya. Gampang kok, klik aja tombol Login'); 
+        }
+    }
+    else {
+        return confirmOrder();
+    }
+}
+
 function confirmOrder() {
     if (!liff.isInClient()){
-        sendAlertIfNotInClient();
+        alert('Hai, kak '+ document.getElementById('user').innerHTML + '\n' + 'Terima kasih telah memesan nasi gorengnya, berikut adalah review pesanannya: ' + '\n'+'\n' + document.getElementById('jumlahPesan').innerHTML + ' menu nasi goreng,'+ '\n' + 'Total harga Rp.' + document.getElementById('jumlahHarga').innerHTML + '\n' + '\n' + 'Pesanan kakak akan segera diproses dan akan diberitahu jika sudah siap untuk diambil. \nMohon ditunggu ya!');
     } else {
-        getData(jumlahPesan, jumlahHarga);
-        let struk = 'Hai Customer,'+ '\n' + 'Terima kasih telah memesan nasi gorengnya, berikut adalah review pesanannya: ' + '\n' + console.log(jumlahPesan) + ' menu nasi goreng,'+ '\n' + console.log(jumlahHarga) + '\n' +'Pesanan kakak akan segera diproses dan akan diberitahu jika sudah siap untuk diambil. \nMohon ditunggu ya!'
+        getData();
+        profil();
+        let struk = 'Hai, kak '+ document.getElementById('user').innerHTML + '\n' + 'Terima kasih telah memesan nasi gorengnya, berikut adalah review pesanannya: ' + '\n'+'\n' + document.getElementById('jumlahPesan').innerHTML + ' menu nasi goreng,'+ '\n' + 'Total harga Rp.' + document.getElementById('jumlahHarga').innerHTML + '\n' + '\n' + 'Pesanan kakak akan segera diproses dan akan diberitahu jika sudah siap untuk diambil. \nMohon ditunggu ya!'
         liff.sendMessages([{
             'type': 'text',
             'text': struk      
@@ -15,7 +42,7 @@ function confirmOrder() {
     }
 }
 
-function getData(jumlahPesan, jumlahHarga) {
+function getData() {
 
     var jumlahmenu1 = parseInt(document.getElementById("jumlahmenu1").value);
     var jumlahmenu2 = parseInt(document.getElementById("jumlahmenu2").value);

@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
   </head>
-  <body onload="loadPesanan();">
-    <h2 align="center">Hi, Customer! Yuk pesan nasi goreng kesukaannya</h2>
+  <body>
+    <h2 align="center">Hi, kak <span id="user"></span> ! Yuk pesan nasi goreng kesukaannya</h2>
     <div class="order">
       <div class="title">
         Nasi Goreng Online
@@ -31,11 +31,11 @@
 
         <div class="quantity">
           <button class="minus-btn" type="button" name="button">
-            <img src="minus.png"/>
+            <img src="minus.svg"/>
           </button>
           <input type="text" name="name" value="1" id="jumlahmenu1">
           <button class="plus-btn" type="button" name="button">
-            <img src="plus.png"/>
+            <img src="plus.svg"/>
           </button>        
         </div>
 
@@ -57,11 +57,11 @@
 
         <div class="quantity">
           <button class="minus-btn" type="button" name="button">
-            <img src="minus.png"/>
+            <img src="minus.svg"/>
           </button>
           <input type="text" name="name" value="1" id="jumlahmenu2">
           <button class="plus-btn" type="button" name="button">
-            <img src="plus.png"/>
+            <img src="plus.svg"/>
           </button> 
         </div>
 
@@ -83,11 +83,11 @@
 
         <div class="quantity">
           <button class="minus-btn" type="button" name="button">
-            <img src="minus.png"/>
+            <img src="minus.svg"/>
           </button>
           <input type="text" name="name" value="1" id="jumlahmenu3">
           <button class="plus-btn" type="button" name="button">
-            <img src="plus.png"/>
+            <img src="plus.svg"/>
           </button>     
         </div>
 
@@ -97,7 +97,7 @@
       <!-- Total Order -->
 
       <div class="final-order">
-        <input type="button" value="Update Pesanan" onclick="getData();" class="btn btn-success btn-small" />
+        <input type="button" value="Update Pesanan" onclick="loadLogin();" class="btn btn-success btn-small" />
       </div>
       <div class="final-order">
         Ringkasan Pesanannya
@@ -106,10 +106,10 @@
         Total: <span id="jumlahPesan"></span> menu nasi goreng
       </div>
       <div class="final-order">
-        Harga: <span id="jumlahHarga"></span>
+        Harga: Rp.<span id="jumlahHarga"></span>
       </div>
       <div class="final-order">
-        <input type="button" value="OK Konfirmasi Order" onclick="confirmOrder();" class="btn btn-success btn-small" />
+        <input type="button" value="OK Konfirmasi Order" onclick="loadLogin1();" class="btn btn-success btn-small" />
       </div>
 
     <!--Konten LIFF v2-->
@@ -126,7 +126,6 @@
         <div class="buttonRow">
             <button id="openWindowButton" class="btn btn-success btn-small">Open External Window</button>
             <button id="closeWindowButton" class="btn btn-danger btn-small">Close LIFF App</button>
-            <button id="sendMessageButton" class="btn btn-warning btn-small">Send Message</button>
         </div>
       </div>
 

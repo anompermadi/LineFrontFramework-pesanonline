@@ -69,6 +69,7 @@ function initializeApp() {
     // check if the user is logged in/out, and disable inappropriate button
     if (liff.isLoggedIn()) {
         document.getElementById('liffLoginButton').disabled = true;
+        profil();
     } else {
         document.getElementById('liffLogoutButton').disabled = true;
     }
@@ -123,20 +124,6 @@ function registerButtonHandlers() {
         }
     });
 
-    document.getElementById('sendMessageButton').addEventListener('click', function() {
-        if (!liff.isInClient()){
-            sendAlertIfNotInClient();
-        } else{
-            liff.sendMessage([{
-                'type': 'text',
-                'text': "Anda telah menggunakan fitur Send Message!"
-            }]).then(function() {
-                window.alert('ini adalah pesan dari fitur send message');
-            }).catch(function(error) {
-                window.alert('Error sending message: ' + error);
-            });
-        }
-    });
 }
 
 function sendAlertIfNotInClient(){
@@ -154,3 +141,16 @@ function toggleELement(elementId){
         elem.style.display = 'block';
     }
 }
+
+// get profile
+function profil(){
+    liff.getProfile()
+    .then(profile => {
+        document.querySelector('#user').innerText = profile.displayName;
+    })
+    .catch((err) => {
+        console.log('error', err);
+    });
+    const nama = document.getElementById('user').innerHTML;
+}
+
